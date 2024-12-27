@@ -3,7 +3,7 @@
 #
 
 module "gke" {
-  source                     = "./modules/terraform-google-kubernetes-engine"
+  source                     = "${path.module}/modules/terraform-google-kubernetes-engine"
   project_id                 = var.project_id
   name                       = var.name
   region                     = var.region
