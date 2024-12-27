@@ -3,7 +3,7 @@
 #
 
 module "gke" {
-  source                     = "${path.module}/modules/terraform-google-kubernetes-engine"
+  source                     = "./modules/terraform-google-kubernetes-engine"
   project_id                 = var.project_id
   name                       = var.name
   region                     = var.region
@@ -17,7 +17,7 @@ module "gke" {
   horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
   filestore_csi_driver       = var.filestore_csi_driver
   dns_cache                  = var.dns_cache
-  node_pools                 = var.node_pools
+  # node_pools                 = var.node_pools
 
   # node_pools = [
   #   {
@@ -47,11 +47,11 @@ module "gke" {
   #   },
   # ]
 
-  node_pools_oauth_scopes = var.node_pools_oauth_scopes
-  node_pools_labels       = var.node_pools_labels
-  node_pools_metadata     = var.node_pools_metadata
-  node_pools_taints       = var.node_pools_taints
-  node_pools_tags         = var.node_pools_tags
+  # node_pools_oauth_scopes = var.node_pools_oauth_scopes
+  # node_pools_labels       = var.node_pools_labels
+  # node_pools_metadata     = var.node_pools_metadata
+  # node_pools_taints       = var.node_pools_taints
+  # node_pools_tags         = var.node_pools_tags
 }
 
 #
