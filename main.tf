@@ -17,7 +17,7 @@ module "gke" {
   horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
   filestore_csi_driver       = var.filestore_csi_driver
   dns_cache                  = var.dns_cache
-  # node_pools                 = var.node_pools
+  node_pools                 = var.node_pools
 
   # node_pools = [
   #   {
