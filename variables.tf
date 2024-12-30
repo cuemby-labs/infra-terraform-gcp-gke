@@ -2,16 +2,16 @@
 # GKE Variables
 #
 
-# variable "project_id" {
-#   description = "The project ID to host the cluster in (required)"
-#   type        = string
-#   default     = ""
-# }
+variable "project_id" {
+  description = "The project ID to host the cluster in (required)"
+  type        = string
+  default     = ""
+}
 
 variable "name" {
   description = "The name of the cluster (required)"
   type        = string
-  default     = "gke-cluster-"
+  default     = "gke-cluster"
 }
 
 variable "region" {
