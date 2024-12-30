@@ -1,19 +1,11 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template .
+  title: OpenAPI schema for GKE template .
 components:
   schemas:
     variables:
       type: object
       properties:
-        project_id:
-          title: Project Id
-          type: string
-          description: The project ID to host the cluster in (required)
-          default: ""
-          x-walrus-ui:
-            group: Basic
-            order: 1
         name:
           title: Name
           type: string
@@ -21,7 +13,7 @@ components:
           default: gke-cluster
           x-walrus-ui:
             group: Basic
-            order: 2
+            order: 1
         region:
           title: Region
           type: string
@@ -29,7 +21,7 @@ components:
             / required if regional)
           x-walrus-ui:
             group: Basic
-            order: 3
+            order: 2
         access_type:
           title: Access Type
           type: string
@@ -40,7 +32,7 @@ components:
           - EXTERNAL
           x-walrus-ui:
             group: Basic
-            order: 4
+            order: 3
         subnetwork:
           title: Subnetwork
           type: string
@@ -48,7 +40,7 @@ components:
           default: 10.0.0.0/16
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 4
         ip_range_pods:
           title: Ip Range Pods
           type: string
@@ -56,7 +48,7 @@ components:
           default: 192.168.0.0/24
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 5
         ip_range_services:
           title: Ip Range Services
           type: string
@@ -64,7 +56,7 @@ components:
           default: 192.168.1.0/24
           x-walrus-ui:
             group: Basic
-            order: 7
+            order: 6
       x-walrus-ui:
         groupOrder:
         - Basic
