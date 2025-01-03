@@ -42,6 +42,7 @@ resource "google_container_cluster" "cluster" {
   enable_l4_ilb_subsetting = true
   network                  = google_compute_network.network.id
   subnetwork               = google_compute_subnetwork.subnetwork.id
+  datapath_provider        = "ADVANCED_DATAPATH"
 
   ip_allocation_policy {
     stack_type                    = "IPV4_IPV6"
