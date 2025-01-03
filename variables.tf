@@ -9,13 +9,13 @@
 # }
 
 variable "name" {
-  description = "The name of the cluster (required)"
+  description = "The name of the cluster (required)."
   type        = string
   default     = "gke-cluster"
 }
 
 variable "region" {
-  description = "The region to host the cluster in (optional if zonal cluster / required if regional)"
+  description = "The region to host the cluster in (optional if zonal cluster / required if regional)."
   type        = string
   default     = null
 }
@@ -44,91 +44,47 @@ variable "subnetwork" {
   default     = "10.0.0.0/16"
 }
 
+variable "machine_type" {
+  description = "The machine type for the node pool (required)."
+  type        = string
+  default     = "e2-medium"
+}
+
+variable "disk_size" {
+  description = "The disk size (in GB) for each node (optional)."
+  type        = number
+  default     = 25
+}
+
+variable "preemptible" {
+  description = "Specifies if the nodes are preemptible (optional)."
+  type        = bool
+  default     = false
+}
+
 variable "ip_range_pods" {
-  description = "The _name_ of the secondary subnet ip range to use for pods"
+  description = "The _name_ of the secondary subnet ip range to use for pods (required)."
   type        = string
   default     = "192.168.0.0/24"
 }
 
 variable "ip_range_services" {
-  description = "The _name_ of the secondary subnet range to use for services"
+  description = "The _name_ of the secondary subnet range to use for services (required)."
   type        = string
   default     = "192.168.1.0/24"
 }
 
-# variable "http_load_balancing" {
-#   description = "Enable httpload balancer addon"
-#   type        = bool
-#   default     = true
-# }
+variable "initial_node_count" {
+  description = "The initial number of nodes in the node pool (required)."
+  type        = number
+  default     = 3
+}
 
-# variable "network_policy" {
-#   description = "Enable network policy addon"
-#   type        = bool
-#   default     = false
-# }
-
-# variable "horizontal_pod_autoscaling" {
-#   description = "Enable or disable horizontal pod autoscaling."
-#   type        = bool
-#   default     = true
-# }
-
-# variable "filestore_csi_driver" {
-#   description = "The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes"
-#   type        = bool
-#   default     = false
-# }
-
-# variable "dns_cache" {
-#   description = "The status of the NodeLocal DNSCache addon."
-#   type        = bool
-#   default     = false
-# }
-
-# variable "node_pools" {
-#   type        = list(map(any))
-#   description = "List of maps containing node pools"
-
-#   default = [
-#     {
-#       name                        = "default-node-pool"
-#       machine_type                = "e2-medium"
-#       node_locations              = "us-central1-b,us-central1-c"
-#       min_count                   = 1
-#       max_count                   = 100
-#       local_ssd_count             = 0
-#       spot                        = false
-#       disk_size_gb                = 100
-#       disk_type                   = "pd-standard"
-#       image_type                  = "COS_CONTAINERD"
-#       enable_gcfs                 = false
-#       enable_gvnic                = false
-#       logging_variant             = "DEFAULT"
-#       auto_repair                 = true
-#       auto_upgrade                = true
-#       service_account             = "project-service-account@<PROJECT ID>.iam.gserviceaccount.com"
-#       preemptible                 = false
-#       initial_node_count          = 80
-#       accelerator_count           = 1
-#       accelerator_type            = "nvidia-l4"
-#       gpu_driver_version          = "LATEST"
-#       gpu_sharing_strategy        = "TIME_SHARING"
-#       max_shared_clients_per_gpu  = 2
-#     }
-#   ]
-# }
-
-# variable "node_pools_oauth_scopes" {
-#   type        = map(list(string))
-#   description = "Map of lists containing node oauth scopes by node-pool name"
-
-#   # Default is being set in variables_defaults.tf
-#   default = {
-#     all               = ["https://www.googleapis.com/auth/cloud-platform"]
-#     default-node-pool = []
-#   }
-# }
+variable "admin_email" {
+  description = "The admin email for IAM permissions (required)."
+  type        = string
+  default     = "walrus-gke-service-account-id"
+}
 
 # variable "node_pools_labels" {
 #   type        = map(map(string))

@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for GKE template .
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
@@ -9,7 +9,7 @@ components:
         name:
           title: Name
           type: string
-          description: The name of the cluster (required)
+          description: The name of the cluster (required).
           default: gke-cluster
           x-walrus-ui:
             group: Basic
@@ -18,7 +18,7 @@ components:
           title: Region
           type: string
           description: The region to host the cluster in (optional if zonal cluster
-            / required if regional)
+            / required if regional).
           x-walrus-ui:
             group: Basic
             order: 2
@@ -41,22 +41,64 @@ components:
           x-walrus-ui:
             group: Basic
             order: 4
+        machine_type:
+          title: Machine Type
+          type: string
+          description: The machine type for the node pool (required).
+          default: e2-medium
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        disk_size:
+          title: Disk Size
+          type: number
+          description: The disk size (in GB) for each node (optional).
+          default: 25
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        preemptible:
+          title: Preemptible
+          type: boolean
+          description: Specifies if the nodes are preemptible (optional).
+          default: false
+          x-walrus-ui:
+            group: Basic
+            order: 7
         ip_range_pods:
           title: Ip Range Pods
           type: string
           description: The _name_ of the secondary subnet ip range to use for pods
+            (required).
           default: 192.168.0.0/24
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 8
         ip_range_services:
           title: Ip Range Services
           type: string
           description: The _name_ of the secondary subnet range to use for services
+            (required).
           default: 192.168.1.0/24
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 9
+        initial_node_count:
+          title: Initial Node Count
+          type: number
+          description: The initial number of nodes in the node pool (required).
+          default: 3
+          x-walrus-ui:
+            group: Basic
+            order: 10
+        admin_email:
+          title: Admin Email
+          type: string
+          description: The admin email for IAM permissions (required).
+          default: walrus-gke-service-account-id
+          x-walrus-ui:
+            group: Basic
+            order: 11
       x-walrus-ui:
         groupOrder:
         - Basic
