@@ -20,7 +20,7 @@ resource "google_compute_subnetwork" "subnetwork" {
   ip_cidr_range    = var.subnetwork
   region           = var.region
   stack_type       = "IPV4_IPV6"
-  ipv6_access_type = var.access_type # Change to "EXTERNAL" if creating an external loadbalancer
+  ipv6_access_type = var.access_type
 
   network = google_compute_network.network.id
 
@@ -55,8 +55,7 @@ resource "google_container_cluster" "cluster" {
     }
   }
 
-  # Set `deletion_protection` to `true` will ensure that one cannot
-  # accidentally delete this instance by use of Terraform.
+  initial_node_count  = var.initial_node_count
   deletion_protection = false
 }
 
@@ -74,8 +73,6 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/cloud-platform"
     ]
   }
-
-  initial_node_count = var.initial_node_count
 }
 
 #
