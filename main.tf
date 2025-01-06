@@ -86,17 +86,12 @@ data "template_file" "kubeconfig" {
   template = file("${path.module}/kubeconfig.tpl")
 
   vars = {
-    cluster_name           = var.name
+    cluster_name           = "${data.google_client_config.default.project}_${region}_${var.name}"
     cluster_endpoint       = "https://${google_container_cluster.cluster.endpoint}"
     cluster_ca_certificate = google_container_cluster.cluster.master_auth[0].cluster_ca_certificate
     access_token           = data.google_client_config.default.access_token
   }
 }
-
-# resource "local_file" "kubeconfig" {
-#   content  = data.template_file.kubeconfig.rendered
-#   filename = "kubeconfig"
-# }
 
 #
 # Walrus Resources
